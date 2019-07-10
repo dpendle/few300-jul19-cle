@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+$body-bg: rgb(231, 255, 246);
+$theme-colors: (
+  "primary" : rgb(128, 0, 75)
+);
+
+$enable-rounded: false;
+
+@import "../node_modules/bootstrap/scss/bootstrap";

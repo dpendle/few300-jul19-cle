@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Question {{ (model$ | async)?.num }} of {{ (model$ | async)?.of }}</h5>
+
+    <p class="card-text">{{ (model$ | async )?.question }}</p>
+    <div class="form-group">
+      <label for="answer">Answer:</label>
+      <input class="form-control"
+             type="number"
+             min="0"
+             #guess
+             id="answer">
+    </div>
+    <input type="button"
+           *ngIf="!(atEnd$ | async)"
+           (click)="next(guess)"
+           class="btn btn-primary"
+           value="Next Question">
+    <input type="button"
+           *ngIf="(atEnd$ | async)"
+           (click)="next(guess)"
+           class="btn btn-success"
+           value="Finish Game">
+  </div>
+</div>
