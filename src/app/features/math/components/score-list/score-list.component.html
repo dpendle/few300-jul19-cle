@@ -6,13 +6,17 @@
 
 <ul class="list-unstyled">
   <li *ngFor="let score of scoresModel.scores">
-    <p>Question {{ score.num }} was
-      {{ score.question }}. The right answer was
-      {{ score.answer }}.
-      <span *ngIf="score.incorrect">
-        You got it wrong. You said {{ score.providedAnswer}}.
-        <em>Duh!</em>
-      </span>
-    </p>
+    <div class="alert"
+         [ngClass]="{'alert-success': !score.incorrect, 'alert-danger': score.incorrect}">
+      <p>Question {{ score.num }} was
+        {{ score.question }}. The right answer was
+        {{ score.answer }}.
+        <span *ngIf="!score.incorrect">Wow! You got that right!</span>
+        <span *ngIf="score.incorrect">
+          You got it wrong. You said {{ score.providedAnswer}}.
+          <em>Duh!</em>
+        </span>
+      </p>
+    </div>
   </li>
 </ul>

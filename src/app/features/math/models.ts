@@ -7,7 +7,7 @@ export interface QuestionModel {
 export interface ScoresModel {
   scores: ScoreLineModel[];
   numberOfQuestions: number;
-  numberOfCorrect: number;
+  numberCorrect: number;
   numberWrong: number;
 }
 

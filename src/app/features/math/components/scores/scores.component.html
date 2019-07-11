@@ -1,4 +1,8 @@
 <header>
   <h4>Your Scores</h4>
 </header>
-<app-source></app-source>
+<input type="button"
+       (click)="playAgain()"
+       class="btn btn-success"
+       value="Play Again :)">
+<app-score-list [scoresModel]="scoresModel$ | async"></app-score-list>

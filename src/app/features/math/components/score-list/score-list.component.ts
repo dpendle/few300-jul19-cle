@@ -9,7 +9,7 @@ import { ScoresModel } from '../../models';
 export class ScoreListComponent implements OnInit {
 
   @Input() scoresModel: ScoresModel = {
-    numberOfCorrect: 0,
+    numberCorrect: 0,
     numberOfQuestions: 0,
     numberWrong: 0,
     scores: []
