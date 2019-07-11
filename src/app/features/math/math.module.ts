@@ -6,6 +6,7 @@ import { GameComponent } from './components/game/game.component';
 import { ScoresComponent } from './components/scores/scores.component';
 import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './reducers';
+import { ScoreListComponent } from './components/score-list/score-list.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MathComponent, GameComponent, ScoresComponent],
+  declarations: [MathComponent, GameComponent, ScoresComponent, ScoreListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

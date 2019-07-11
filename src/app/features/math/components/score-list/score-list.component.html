@@ -1,0 +1,18 @@
+<h4>You Win!</h4>
+<p>Of {{ scoresModel.numberOfQuestions }}
+  You got {{ scoresModel.numberCorrect }} correct
+  and you got {{ scoresModel.numberWrong }} wrong.
+</p>
+
+<ul class="list-unstyled">
+  <li *ngFor="let score of scoresModel.scores">
+    <p>Question {{ score.num }} was
+      {{ score.question }}. The right answer was
+      {{ score.answer }}.
+      <span *ngIf="score.incorrect">
+        You got it wrong. You said {{ score.providedAnswer}}.
+        <em>Duh!</em>
+      </span>
+    </p>
+  </li>
+</ul>

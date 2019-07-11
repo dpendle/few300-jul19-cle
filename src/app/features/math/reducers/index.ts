@@ -21,7 +21,7 @@ const selectQuestionsBranch = createSelector(selectMathFeature, m => m.questions
 // 3. Selectors that are "helpers" to get the data you need for step 4
 const selectCurrentQuestionId = createSelector(selectQuestionsBranch, q => q.currentQuestionId);
 const {
-  selectTotal: totalQuestions,
+  selectTotal: totalNumberOfQuestions,
   selectEntities: selectQuestionEntities } = fromQuestions.adapter.getSelectors(selectQuestionsBranch);
 
 // 4. Create a selector for each component model
@@ -32,9 +32,11 @@ const selectSelectedQuestion = createSelector(
 );
 
 export const selectQuestionModel = createSelector(
-  totalQuestions,
+  totalNumberOfQuestions,
   selectSelectedQuestion,
-  (total, selected) => {
+  selectCurrentQuestionId,
+  (total, selected, currentId) => {
+    if (currentId > total) { return null; }
     return {
       num: selected.id,
       of: total,
@@ -44,7 +46,12 @@ export const selectQuestionModel = createSelector(
 );
 
 export const selectAtEndOfQuestion = createSelector(
-  totalQuestions,
+  totalNumberOfQuestions,
   selectCurrentQuestionId,
   (total, current) => total === current
+);
+
+export const selectGameOverMan = createSelector(
+  selectQuestionsBranch,
+  q => q.missedQuestions.length === 3
 );

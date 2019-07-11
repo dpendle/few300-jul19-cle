@@ -1,4 +1,13 @@
-<div class="card">
+<div class="alert alert-danger"
+     *ngIf="(gameOver$ | async)">
+  <h3>GAME OVER YOU LOOSE!</h3>
+  <input type="button"
+         (click)="playAgain()"
+         class="btn btn-success"
+         value="Play Again :)">
+</div>
+<div class="card"
+     *ngIf="(gameOver$ | async) === false">
   <div class="card-body">
     <h5 class="card-title">Question {{ (model$ | async)?.num }} of {{ (model$ | async)?.of }}</h5>
 
@@ -12,13 +21,13 @@
              id="answer">
     </div>
     <input type="button"
-           *ngIf="!(atEnd$ | async)"
+           *ngIf="(atEnd$ | async) === false"
            (click)="next(guess)"
            class="btn btn-primary"
            value="Next Question">
     <input type="button"
            *ngIf="(atEnd$ | async)"
-           (click)="next(guess)"
+           (click)="finish(guess)"
            class="btn btn-success"
            value="Finish Game">
   </div>
