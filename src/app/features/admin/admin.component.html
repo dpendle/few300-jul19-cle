@@ -1,0 +1,37 @@
+<form [formGroup]="personalInformationGroup"
+      (ngSubmit)="saveIt()">
+  <fieldset>
+    <legend>Personal Information</legend>
+    <div class="form-group">
+      <label for="firstName">
+        First Name
+      </label>
+      <input name="firstName"
+             id="firstName"
+             formControlName="firstName"
+             class="form-control">
+      <div class="alert alert-danger"
+           *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        <span *ngIf="firstName.errors.required">This is required</span>
+        <span *ngIf="firstName.errors.maxlength">This is too long! It should be
+          {{ firstName.errors.maxlength.requiredLength }} or less.</span>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">
+        Last Name
+      </label>
+      <input name="lastName"
+             id="lastName"
+             formControlName="lastName"
+             class="form-control">
+    </div>
+  </fieldset>
+  <input type="submit"
+         [disabled]="personalInformationGroup.invalid"
+         value="Hire this Joker"
+         class="btn btn-primary">
+</form>
+
+<pre> {{ personalInformationGroup.status | json }}</pre>

@@ -5,8 +5,12 @@
          [routerLinkActive]="['active']"
          [routerLink]="['game']">Game</a>
       <a class="nav-link"
+         [hidden]="(hideScores$ | async)"
          [routerLinkActive]="['active']"
          [routerLink]="['scores']">Scores</a>
+      <a class="nav-link"
+         [routerLinkActive]="['active']"
+         [routerLink]="['saved-scores']">Saved Scores</a>
     </nav>
   </div>
   <div class="col">

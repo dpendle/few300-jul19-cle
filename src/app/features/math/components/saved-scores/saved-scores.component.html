@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+  <li *ngFor="let score of model$ | async">
+    <div class="alert alert-info">
+      <p>On {{ score.when }} {{ score.who }} got {{ score.right }} and {{ score.wrong }} </p>
+    </div>
+  </li>
+</ul>
